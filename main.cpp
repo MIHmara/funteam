@@ -154,3 +154,15 @@ int main() {
         {"Where is Black Forest?", "France", "Germany", "Austria", 'B', 2, 2},
         {"Ocean west of Europe?", "Pacific", "Indian", "Atlantic", 'C', 2, 2}
     };
+    vector<Question> q3 = {
+        {"EU has how many member states?", "27", "28", "30", 'A', 3, 3},
+        {"Currency of Germany?", "Euro", "Mark", "Franc", 'A', 3, 3},
+        {"Language in Spain?", "Spanish", "Portuguese", "French", 'A', 3, 3},
+        {"Flag with red and white?", "Denmark", "Switzerland", "Poland", 'B', 3, 3},
+        {"Where is Vatican City?", "Italy", "France", "Spain", 'A', 3, 3},
+        {"Where is Kremlin?", "Moscow", "St. Petersburg", "Kiev", 'A', 3, 3},
+        {"Where is Acropolis?", "Rome", "Athens", "Istanbul", 'B', 3, 3},
+        {"Where is Big Ben?", "London", "Edinburgh", "Dublin", 'A', 3, 3},
+        {"Where is Sagrada Familia?", "Barcelona", "Madrid", "Valencia", 'A', 3, 3},
+        {"Where is Neuschwanstein Castle?", "Austria", "Germany", "Switzerland", 'B', 3, 3}
+    };
