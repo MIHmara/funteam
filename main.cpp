@@ -1,12 +1,12 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <cstdlib>
-#include <ctime>
+#include <cstdlib> 
+#include <ctime>   
 
 using namespace std;
 
-// СТРУКТУРИ
+// --- СТРУКТУРИ --- 
 struct Question {
     string text;
     string optionA, optionB, optionC;
@@ -22,34 +22,97 @@ struct Student {
     int pointsCat1, pointsCat2, pointsCat3;
 };
 
-// ВАЛИДАЦИЯ - Защита от грешен вход
+// --- ФУНКЦИИ ЗА ВАЛИДАЦИЯ И ОБРАБОТКА ---
 int getSafeInt(int min, int max) {
     int input;
     while (true) {
-        if (cin >> input && input >= min && input <= max) return input;
-        cout << "Invalid input! Enter number (" << min << "-" << max << "): ";
-        cin.clear();
-        cin.ignore(1000, '\n');
+        if (cin >> input && input >= min && input <= max) {
+            return input;
+        } else {
+            cout << "Invalid input! Please enter a number (" << min << "-" << max << "): ";
+            cin.clear(); 
+            cin.ignore(1000, '\n'); 
+        }
     }
 }
 
 void shuffleQuestions(vector<Question>& qList) {
     for (int i = 0; i < qList.size(); i++) {
-        swap(qList[i], qList[rand() % qList.size()]);
+        int randomIndex = rand() % qList.size();
+        swap(qList[i], qList[randomIndex]);
     }
 }
 
-// ИНТЕРФЕЙС
+// --- ФУНКЦИИ ЗА ПОТРЕБИТЕЛСКИ ИНТЕРФЕЙС ---
 void showMenu() {
-    cout << "\n1. Lesson\n2. Practice\n3. EXAM\n4. Stats\n5. Exit\nChoice: ";
+    cout << "\n=============================================" << endl;
+    cout << "      E-SCHOOL: GEOGRAPHY OF EUROPE" << endl;
+    cout << "=============================================" << endl;
+    cout << "1. Read Lesson (Educational Content)" << endl;
+    cout << "2. Practice (Ungraded)" << endl;
+    cout << "3. TAKE THE EXAM" << endl;
+    cout << "4. View Statistics" << endl;
+    cout << "5. Exit" << endl;
+    cout << "=============================================" << endl;
+    cout << "Choose an option (1-5): ";
 }
 
+void runLesson() {
+    cout << "\n--- LESSON: EUROPE AT A GLANCE ---" << endl;
+    cout << "Largest country: Russia. Smallest: Vatican City." << endl;
+    cout << "Longest river: Volga. Highest peak: Elbrus." << endl;
+    cout << "Europe is the second smallest continent but has the third largest population." << endl;
+}
+
+void startExam(vector<Question>& b1, vector<Question>& b2, vector<Question>& b3, vector<Student>& students) {
+    Student s;
+    cout << "\nEnter your name: ";
+    cin >> s.name;
+
+    s.totalPoints = s.pointsCat1 = s.pointsCat2 = s.pointsCat3 = 0;
+
+    shuffleQuestions(b1); shuffleQuestions(b2); shuffleQuestions(b3);
+
+    vector<Question> exam;
+    for(int i = 0; i < 7; i++) exam.push_back(b1[i]); 
+    for(int i = 0; i < 7; i++) exam.push_back(b2[i]); 
+    for(int i = 0; i < 6; i++) exam.push_back(b3[i]); 
+
+    for (int i = 0; i < exam.size(); i++) {
+        cout << "\nQ" << (i + 1) << ": " << exam[i].text << endl;
+        cout << "A) " << exam[i].optionA << " B) " << exam[i].optionB << " C) " << exam[i].optionC << endl;
+        
+        char ans;
+        cout << "Answer: "; cin >> ans;
+        ans = toupper(ans);
+
+        if (ans == exam[i].correctAnswer) {
+            s.totalPoints += exam[i].points;
+            if (exam[i].category == 1) s.pointsCat1 += exam[i].points;
+            else if (exam[i].category == 2) s.pointsCat2 += exam[i].points;
+            else if (exam[i].category == 3) s.pointsCat3 += exam[i].points;
+        }
+    }
+
+    s.finalGrade = ((double)s.totalPoints / 39.0) * 4.0 + 2.0; 
+    cout << "\nYour Grade: " << s.finalGrade << endl;
+    students.push_back(s);
+}
+
+void showStats(const vector<Student>& students) {
+    if (students.empty()) { cout << "No stats available yet.\n"; return; }
+    double sum = 0;
+    for (const auto& s : students) sum += s.finalGrade;
+    cout << "\n--- GLOBAL STATISTICS ---" << endl;
+    cout << "Average Grade: " << sum / students.size() << endl;
+    cout << "Total Students: " << students.size() << endl;
+}
+
+// --- ГЛАВНА ФУНКЦИЯ ---
 int main() {
     srand(time(0));
     vector<Student> students;
-    
-    // БАНКА С ВЪПРОСИ (Начална версия)
-    // КАТЕГОРИЯ 1: Столици (10 въпроса)
+
     vector<Question> b1 = {
         {"Capital of France?", "London", "Paris", "Berlin", 'B', 1, 1},
         {"Capital of Italy?", "Rome", "Madrid", "Athens", 'A', 1, 1},
@@ -63,7 +126,6 @@ int main() {
         {"Capital of Sweden?", "Oslo", "Helsinki", "Stockholm", 'C', 1, 1}
     };
 
-    // КАТЕГОРИЯ 2: Природа (10 въпроса)
     vector<Question> b2 = {
         {"Longest river in Europe?", "Danube", "Volga", "Rhine", 'B', 2, 2},
         {"Where are the Alps?", "Central Europe", "North", "East", 'A', 2, 2},
@@ -77,7 +139,6 @@ int main() {
         {"Ocean west of Europe?", "Pacific", "Indian", "Atlantic", 'C', 2, 2}
     };
 
-    // КАТЕГОРИЯ 3: Икономика и Население (10 въпроса)
     vector<Question> b3 = {
         {"Largest population in Europe?", "Germany", "Russia", "France", 'B', 3, 3},
         {"EU Headquarters?", "Brussels", "Strasbourg", "Geneva", 'A', 3, 3},
@@ -90,4 +151,16 @@ int main() {
         {"Produces most wine?", "Spain", "Italy", "Germany", 'B', 3, 3},
         {"European Central Bank location?", "Frankfurt", "Paris", "London", 'A', 3, 3}
     };
+
+    int choice;
+    do {
+        showMenu();
+        choice = getSafeInt(1, 5);
+        if (choice == 1) runLesson();
+        else if (choice == 2) cout << "Practice mode (Feature coming soon)...\n";
+        else if (choice == 3) startExam(b1, b2, b3, students);
+        else if (choice == 4) showStats(students);
+    } while (choice != 5);
+
+    return 0;
 }
