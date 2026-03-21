@@ -1,30 +1,38 @@
 # funteam
 # 🌍 E-School: Geography of Europe
-**Проект по Проектни дейности IX клас | [cite_start]ПГКПИ Бургас** [cite: 8, 13]
+**Project for 9th Grade Project Activities | PGKPPI Burgas (2025/2026)**
 
-## 📝 Описание (Description)
-[cite_start]Това приложение е интерактивно електронно училище, създадено на C++[cite: 15, 43]. [cite_start]То включва учебно съдържание за географията на Европа, упражнения и автоматизиран изпит за проверка на знанията[cite: 17, 18].
+## 📝 Project Description
+[cite_start]This application is an interactive educational tool designed for learning and testing knowledge about European Geography[cite: 15]. [cite_start]It features study materials, practice sessions, and a standardized exam with automated grading[cite: 17].
 
-## [cite_start]👥 Екип (The Team) [cite: 90, 94]
-* [cite_start]**Твоето Име** — Scrum Trainer (Координатор и Backend) [cite: 62]
-* **Име на съотборник 2** — Backend Developer
-* **Име на съотборник 3** — FrontEnd Developer
-* **Име на съотборник 4** — QA & Documentation
+## 👥 The Team
+* [cite_start]**[Your Name]** — **Scrum Trainer**: Team coordinator, GitHub administrator, and Backend Developer[cite: 62, 94].
+* [cite_start]**[Teammate 2 Name]** — **Backend Developer**: Logic implementation and data processing[cite: 68, 94].
+* [cite_start]**[Teammate 3 Name]** — **FrontEnd Developer**: User interface and menu design[cite: 68, 94].
+* [cite_start]**[Teammate 4 Name]** — **QA & Documentation**: Testing, error handling, and Wiki maintenance.
 
-## ⚙️ Функционалности (Features)
-* [cite_start]**Банка с въпроси:** Минимум 30 въпроса в 3 категории трудност[cite: 19].
-* [cite_start]**Генериране на тест:** Автоматично избиране на 20 въпроса (7 лесни, 7 средни, 6 трудни)[cite: 19].
-* **Валидация:** Защита срещу неправилно въведени данни от клавиатурата[cite: 48].
-* [cite_start]**Статистика:** Изчисляване на среден успех и резултати по категории[cite: 22, 24].
+## ⚙️ Features
+* [cite_start]**Question Bank:** Over 30 specialized questions divided into categories[cite: 19].
+* [cite_start]**Test Generation:** Randomly generates a 20-question exam (7 easy, 7 medium, 6 hard)[cite: 19].
+* [cite_start]**Input Validation:** Secure `getSafeInt` function to prevent crashes from invalid keyboard input[cite: 48].
+* [cite_start]**Statistics:** Tracks student performance, including average grades and category success rates[cite: 22, 24].
 
-## [cite_start]📈 Математически модел (Grading Scale) [cite: 21, 28]
-Оценката се формира по шестобалната система на базата на 39 максимални точки:
-[cite_start]**Формула:** `Grade = (Points / 39.0) * 4 + 2` [cite: 21]
+## 📈 Mathematical Model & Combinations
+[cite_start]The final grade is calculated using a standard 6-point scale based on a maximum of 39 points[cite: 21]:
+**Formula:** `Grade = (TotalPoints / 39.0) * 4 + 2`
 
-**Възможни варианти на теста:**
-Тъй като избираме 7 от 10 въпроса в първите две категории и 6 от 10 в третата, броят комбинации е:
-[cite_start]$C_{10}^{7} \times C_{10}^{7} \times C_{10}^{6} = 120 \times 120 \times 210 = 3,024,000$ възможни варианта. [cite: 28]
+### Test Variations
+[cite_start]According to the project requirements to calculate the number of possible test variants:
+We choose 7 questions from 10 (Category 1), 7 from 10 (Category 2), and 6 from 10 (Category 3).
+The number of unique combinations is:
+$$C_{10}^{7} \times C_{10}^{7} \times C_{10}^{6} = 120 \times 120 \times 210 = 3,024,000 \text{ variants}$$
 
-## 🚀 Стартиране (How to run)
-1. Компилирайте `main.cpp` с компилатор поддържащ C++11 или по-нов.
-2. Стартирайте генерираното EXE файл.
+## 🛠 Technologies
+* [cite_start]**Language:** C++ [cite: 43]
+* [cite_start]**Libraries:** STL (vector, string), cstdlib, ctime [cite: 32, 51]
+* [cite_start]**Platform:** GitHub for version control and collaboration [cite: 39]
+
+## 🚀 How to Run
+1. Clone the repository.
+2. Compile `main.cpp` using a C++ compiler (e.g., `g++ main.cpp -o ESchool`).
+3. Run the executable file.
