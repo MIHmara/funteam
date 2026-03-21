@@ -125,3 +125,20 @@ void showStats(const vector<Student>& list) {
     cout << "Lowest Grade:    " << minG << " (" << worst << ")\n";
     cout << "---------------------------------------\n";
 }
+
+int main() {
+    srand(time(0));
+    vector<Student> list;
+
+    vector<Question> q1 = {
+        {"Capital of France?", "London", "Paris", "Berlin", 'B', 1, 1},
+        {"Capital of Italy?", "Rome", "Madrid", "Athens", 'A', 1, 1},
+        {"Capital of Spain?", "Lisbon", "Madrid", "Rome", 'B', 1, 1},
+        {"Capital of Germany?", "Vienna", "Munich", "Berlin", 'C', 1, 1},
+        {"Capital of UK?", "London", "Dublin", "Cardiff", 'A', 1, 1},
+        {"Capital of Greece?", "Sofia", "Athens", "Ankara", 'B', 1, 1},
+        {"Capital of Bulgaria?", "Sofia", "Bucharest", "Belgrade", 'A', 1, 1},
+        {"Capital of Austria?", "Vienna", "Prague", "Budapest", 'A', 1, 1},
+        {"Capital of Poland?", "Warsaw", "Kiev", "Minsk", 'A', 1, 1},
+        {"Capital of Sweden?", "Oslo", "Helsinki", "Stockholm", 'C', 1, 1}
+    };
