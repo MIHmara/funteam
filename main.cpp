@@ -118,3 +118,10 @@ void showStats(const vector<Student>& list) {
         if (s.grade > maxG) { maxG = s.grade; best = s.name; }
         if (s.grade < minG) { minG = s.grade; worst = s.name; }
     }
+        cout << "\n---------- GLOBAL STATISTICS ----------\n";
+    cout << "Students tested: " << list.size() << endl;
+    cout << "Average Grade:   " << sum / list.size() << endl;
+    cout << "Highest Grade:   " << maxG << " (" << best << ")\n";
+    cout << "Lowest Grade:    " << minG << " (" << worst << ")\n";
+    cout << "---------------------------------------\n";
+}
