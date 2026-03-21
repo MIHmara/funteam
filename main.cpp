@@ -166,3 +166,20 @@ int main() {
         {"Where is Sagrada Familia?", "Barcelona", "Madrid", "Valencia", 'A', 3, 3},
         {"Where is Neuschwanstein Castle?", "Austria", "Germany", "Switzerland", 'B', 3, 3}
     };
+
+        int choice;
+
+    do {
+        showMenu();
+        choice = getInt(1, 5);
+
+        if (choice == 1) showLesson();
+        else if (choice == 2) cout << "\nPractice mode coming soon...\n";
+        else if (choice == 3) startExam(q1, q2, q3, list);
+        else if (choice == 4) showStats(list);
+
+    } while (choice != 5);
+
+    cout << "Exiting program. Goodbye!\n";
+    return 0;
+}
