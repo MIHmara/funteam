@@ -102,3 +102,19 @@ void startExam(vector<Question>& q1, vector<Question>& q2, vector<Question>& q3,
 
     list.push_back(s);
 }
+void showStats(const vector<Student>& list) {
+    if (list.empty()) {
+        cout << "\n[!] No exam data available.\n";
+        return;
+    }
+
+    double sum = 0;
+    double maxG = 0;
+    double minG = 7.0;
+    string best, worst;
+
+    for (const auto& s : list) {
+        sum += s.grade;
+        if (s.grade > maxG) { maxG = s.grade; best = s.name; }
+        if (s.grade < minG) { minG = s.grade; worst = s.name; }
+    }
