@@ -142,3 +142,15 @@ int main() {
         {"Capital of Poland?", "Warsaw", "Kiev", "Minsk", 'A', 1, 1},
         {"Capital of Sweden?", "Oslo", "Helsinki", "Stockholm", 'C', 1, 1}
     };
+        vector<Question> q2 = {
+        {"Longest river in Europe?", "Danube", "Volga", "Rhine", 'B', 2, 2},
+        {"Where are the Alps?", "Central Europe", "North", "East", 'A', 2, 2},
+        {"Highest peak in Europe?", "Mont Blanc", "Elbrus", "Matterhorn", 'B', 2, 2},
+        {"Sea south of Europe?", "Baltic", "North Sea", "Mediterranean", 'C', 2, 2},
+        {"River in Paris?", "Seine", "Thames", "Rhone", 'A', 2, 2},
+        {"Mountains between Europe and Asia?", "Alps", "Ural", "Carpathians", 'B', 2, 2},
+        {"Largest island in Europe?", "Iceland", "Ireland", "Great Britain", 'C', 2, 2},
+        {"Country with most lakes?", "Finland", "Norway", "Sweden", 'A', 2, 2},
+        {"Where is Black Forest?", "France", "Germany", "Austria", 'B', 2, 2},
+        {"Ocean west of Europe?", "Pacific", "Indian", "Atlantic", 'C', 2, 2}
+    };
