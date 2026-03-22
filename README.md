@@ -3,13 +3,15 @@
 **Project for 9th Grade Project Activities | PGKPPI Burgas (2025/2026)**
 
 ## 📝 Project Description
-[cite_start]This application is an interactive educational tool designed for learning and testing knowledge about European Geography[cite: 15]. [cite_start]It features study materials, practice sessions, and a standardized exam with automated grading[cite: 17].
+The program allows users to read a short lesson, practice, take an exam, and view statistics based on previous exam attempts.
+Users can read a short lesson, practice (feature placeholder), take a fully automated exam, and view detailed statistics about all completed attempts.
+The exam pulls questions from three difficulty categories, shuffles them, calculates a final grade on a 2.00–6.00 scale, and stores each student's results.
 
 ## 👥 The Team
-* [cite_start]**[Your Name]** — **Scrum Trainer**: Team coordinator, GitHub administrator, and Backend Developer[cite: 62, 94].
-* [cite_start]**[Teammate 2 Name]** — **Backend Developer**: Logic implementation and data processing[cite: 68, 94].
-* [cite_start]**[Teammate 3 Name]** — **FrontEnd Developer**: User interface and menu design[cite: 68, 94].
-* [cite_start]**[Teammate 4 Name]** — **QA & Documentation**: Testing, error handling, and Wiki maintenance.
+*Ангел Пиерре Андре Фриедириш* — **Scrum Trainer**
+*Никита Сергеевич Кощеев* — **Backend Developer**
+*Александър Ивайлов Петров* — **FrontEnd Developer**
+*Мирослава Ивановна Хмара* — **QA & Documentation**
 
 ## ⚙️ Features
 * [cite_start]**Question Bank:** Over 30 specialized questions divided into categories[cite: 19].
