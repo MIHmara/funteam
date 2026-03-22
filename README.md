@@ -15,13 +15,13 @@ The exam pulls questions from three difficulty categories, shuffles them, calcul
 <li>*Мирослава Ивановна Хмара* — **QA & Documentation**</li>
 </ol>
 ## ⚙️ Features
-* [cite_start]**Question Bank:** Over 30 specialized questions divided into categories[cite: 19].
-* [cite_start]**Test Generation:** Randomly generates a 20-question exam (7 easy, 7 medium, 6 hard)[cite: 19].
-* [cite_start]**Input Validation:** Secure `getSafeInt` function to prevent crashes from invalid keyboard input[cite: 48].
-* [cite_start]**Statistics:** Tracks student performance, including average grades and category success rates[cite: 22, 24].
+**Question Bank:** Over 30 specialized questions divided into categories[cite: 19].
+**Test Generation:** Randomly generates a 20-question exam (7 easy, 7 medium, 6 hard)[cite: 19].
+**Input Validation:** Secure `getSafeInt` function to prevent crashes from invalid keyboard input[cite: 48].
+**Statistics:** Tracks student performance, including average grades and category success rates[cite: 22, 24].
 
 ## 📈 Mathematical Model & Combinations
-[cite_start]The final grade is calculated using a standard 6-point scale based on a maximum of 39 points[cite: 21]:
+The final grade is calculated using a standard 6-point scale based on a maximum of 39 points[cite: 21]:
 **Formula:** `Grade = (TotalPoints / 39.0) * 4 + 2`
 
 ### Test Variations
@@ -31,9 +31,9 @@ The number of unique combinations is:
 $$C_{10}^{7} \times C_{10}^{7} \times C_{10}^{6} = 120 \times 120 \times 210 = 3,024,000 \text{ variants}$$
 
 ## 🛠 Technologies
-* [cite_start]**Language:** C++ [cite: 43]
-* [cite_start]**Libraries:** STL (vector, string), cstdlib, ctime [cite: 32, 51]
-* [cite_start]**Platform:** GitHub for version control and collaboration [cite: 39]
+**Language:** C++ [cite: 43]
+**Libraries:** STL (vector, string), cstdlib, ctime [cite: 32, 51]
+**Platform:** GitHub for version control and collaboration [cite: 39]
 
 ## 🚀 How to Run
 1. Clone the repository.
