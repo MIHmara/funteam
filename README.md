@@ -8,10 +8,10 @@ Users can read a short lesson, practice (feature placeholder), take a fully auto
 The exam pulls questions from three difficulty categories, shuffles them, calculates a final grade on a 2.00–6.00 scale, and stores each student's results.
 
 ## 👥 The Team
-*Ангел Пиерре Андре Фриедириш* — **Scrum Trainer**
-*Никита Сергеевич Кощеев* — **Backend Developer**
-*Александър Ивайлов Петров* — **FrontEnd Developer**
-*Мирослава Ивановна Хмара* — **QA & Documentation**
+**Ангел Пиерре Андре Фриедириш* — **Scrum Trainer**
+**Никита Сергеевич Кощеев* — **Backend Developer**
+**Александър Ивайлов Петров* — **FrontEnd Developer**
+**Мирослава Ивановна Хмара* — **QA & Documentation**
 
 ## ⚙️ Features
 * [cite_start]**Question Bank:** Over 30 specialized questions divided into categories[cite: 19].
