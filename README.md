@@ -16,14 +16,14 @@ The exam pulls questions from three difficulty categories, shuffles them, calcul
 </ol>
 
 ## ⚙️ Features
-* <sup>**Question Bank:** Over 30 specialized questions divided into categories</sup>
-* <sup>**Test Generation:** Randomly generates a 20-question exam (7 easy, 7 medium, 6 hard)</sup>
-* <sup>**Input Validation:** Secure `getSafeInt` function to prevent crashes from invalid keyboard input</sup>
-* <sup>**Statistics:** Tracks student performance, including average grades and category success rates</sup>
+* **Question Bank:** Over 30 specialized questions divided into categories
+* **Test Generation:** Randomly generates a 20-question exam (7 easy, 7 medium, 6 hard)
+* **Input Validation:** Secure `getSafeInt` function to prevent crashes from invalid keyboard input
+* **Statistics:** Tracks student performance, including average grades and category success rates
 
 ## 📈 Mathematical Model & Combinations
-<sup>The final grade is calculated using a standard 6-point scale based on a maximum of 39 points</sup>
-<sup> **Formula:** `Grade = (TotalPoints / 39.0) * 4 + 2`
+ The final grade is calculated using a standard 6-point scale based on a maximum of 39 points
+ **Formula:** `Grade = (TotalPoints / 39.0) * 4 + 2`
 
 ### Test Variations
 To calculate the number of possible test variants:
@@ -32,13 +32,20 @@ The number of unique combinations is:
 $$C_{10}^{7} \times C_{10}^{7} \times C_{10}^{6} = 120 \times 120 \times 210 = 3,024,000 \text{ variants}$$
 
 ## 🛠 Technologies
-* <sup>**Language:** C++ </sup>
-* <sup>**Libraries:** STL (vector, string), cstdlib, ctime </sup>
-* <sup>**Platform:** GitHub for version control and collaboration </sup>
-* <sup>**Platform:** VS and Visual Studio Code for coding </sup>
-* <sup>**Platform:** Canva, Power Point and Word for documentation & presentation </sup>
+* **Language:** C++ 
+* **Libraries:** STL (vector, string), cstdlib, ctime 
+* **Platform:** GitHub for version control and collaboration 
+* **Platform:** VS and Visual Studio Code for coding 
+* **Platform:** Canva, Power Point and Word for documentation & presentation 
 
 ## 🚀 How to Run
 1. Clone the repository.
 2. Compile `main.cpp` using a C++ compiler (e.g., `g++ main.cpp -o ESchool`).
 3. Run the executable file.
+
+## 📂 Documentation & Presentation
+
+### 📋 Documentation
+[Documentation](///) 
+### 🎤 Presentation
+[Presentation](///)
