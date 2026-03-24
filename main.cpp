@@ -9,177 +9,161 @@ using namespace std;
 
 struct Question {
     string text;
-    string a, b, c;
-    char correct;
-    int cat;
-    int pts;
+    string optionA, optionB, optionC;
+    char correctAnswer;
+    int category; 
+    int points;
 };
 
 struct Student {
     string name;
-    double grade;
-    int total;
-    int cat1, cat2, cat3;
+    double finalGrade;
+    int totalScore;
 };
 
-int getInt(int min, int max) {
-    int x;
-    while (true) {
-                if (cin >> x && x >= min && x <= max) {
-            cin.ignore(1000, '\n');
-            return x;
-        } else {
-            cout << "Invalid input! Enter number (" << min << "-" << max << "): ";
-            cin.clear();
-            cin.ignore(1000, '\n');
-        }
+int getValidInteger(int min, int max) {
+    int input;
+    while (!(cin >> input) || input < min || input > max) {
+        cout << "Invalid! Please enter a number (" << min << "-" << max << "): ";
+        cin.clear();
+        cin.ignore(1000, '\n');
     }
+    cin.ignore(1000, '\n');
+    return input;
 }
-void shuffleQs(vector<Question>& q) {
-    for (int i = 0; i < q.size(); i++) {
-        int r = rand() % q.size();
-        swap(q[i], q[r]);
+
+void shuffleQuestions(vector<Question>& bank) {
+    for (int i = 0; i < bank.size(); i++) {
+        int swapIndex = rand() % bank.size();
+        swap(bank[i], bank[swapIndex]);
     }
 }
 
-void showMenu() {
-    cout << "\n=============================================\n";
-    cout << "      E-SCHOOL: GEOGRAPHY OF EUROPE\n";
-    cout << "=============================================\n";
-    cout << "1. Read Lesson\n";
-    cout << "2. Practice\n";
-    cout << "2. Practice\n";
-    cout << "3. Take Exam\n";
-    cout << "4. Statistics\n";
-    cout << "5. Exit\n";
-    cout << "=============================================\n";
-    cout << "Choose (1-5): ";
+double calculateGrade(int score, int maxPossible) {
+    double grade = ((double)score / (double)maxPossible) * 4.0 + 2.0;
+    return (grade > 6.0) ? 6.0 : grade;
 }
+
+
+void loadAncient(vector<Question>& b) {
+    b = {
+        {"Who built the Great Pyramid of Giza?", "Egyptians", "Romans", "Greeks", 'A', 1, 1},
+        {"First Emperor of Rome?", "Julius Caesar", "Augustus", "Nero", 'B', 1, 1},
+        {"Ancient writing system of Sumerians?", "Hieroglyphs", "Cuneiform", "Alphabet", 'B', 1, 1},
+        {"Which city-state introduced democracy?", "Sparta", "Athens", "Troy", 'B', 1, 1},
+        {"What river was ancient Egypt built around?", "Tigris", "Nile", "Euphrates", 'B', 1, 1},
+        {"Famous conqueror from Macedonia?", "Alexander", "Hannibal", "Leonidas", 'A', 1, 1},
+        {"Roman city destroyed by a volcano?", "Rome", "Pompeii", "Carthage", 'B', 1, 1},
+        {"Ancient trade route to China?", "Spice Route", "Silk Road", "Amber Road", 'B', 1, 1},
+        {"War between Athens and Sparta?", "Punic", "Peloponnesian", "Persian", 'B', 1, 1},
+        {"Mythical founder of Rome?", "Romulus", "Remus", "Aeneas", 'A', 1, 1}
+    };
+}
+
+void loadMedieval(vector<Question>& b) {
+    b = {
+        {"Disease that devastated 14th-century Europe?", "Cholera", "Black Death", "Smallpox", 'B', 2, 2},
+        {"Document King John signed in 1215?", "Magna Carta", "Bill of Rights", "Constitution", 'A', 2, 2},
+        {"Who was the first Holy Roman Emperor?", "Charlemagne", "Otto I", "Clovis", 'A', 2, 2},
+        {"War between England & France (1337-1453)?", "Thirty Years'", "Hundred Years'", "Rose War", 'B', 2, 2},
+        {"Period of cultural rebirth starting in Italy?", "Enlightenment", "Renaissance", "Reformation", 'B', 2, 2},
+        {"Empire that captured Constantinople in 1453?", "Roman", "Mongol", "Ottoman", 'C', 2, 2},
+        {"Scandinavian seafaring raiders?", "Vikings", "Celts", "Franks", 'A', 2, 2},
+        {"Famous peasant girl who led the French army?", "Eleanor", "Joan of Arc", "Marie Antoinette", 'B', 2, 2},
+        {"System of land ownership and duties?", "Capitalism", "Feudalism", "Communism", 'B', 2, 2},
+        {"Religious wars to control the Holy Land?", "Crusades", "Inquisitions", "Reconquista", 'A', 2, 2}
+    };
+}
+
+void loadModern(vector<Question>& b) {
+    b = {
+        {"Year World War I began?", "1912", "1914", "1918", 'B', 3, 3},
+        {"Inventor of the practical telephone?", "Edison", "Bell", "Tesla", 'B', 3, 3},
+        {"First person in space?", "Armstrong", "Gagarin", "Glenn", 'B', 3, 3},
+        {"Famous ship that sank in 1912?", "Lusitania", "Titanic", "Bismarck", 'B', 3, 3},
+        {"Global conflict that ended in 1945?", "WWI", "WWII", "Cold War", 'B', 3, 3},
+        {"Author of the US Declaration of Independence?", "Washington", "Jefferson", "Lincoln", 'B', 3, 3},
+        {"Fall of this wall in 1989 reunited Germany?", "Berlin", "Munich", "Iron", 'A', 3, 3},
+        {"French general who became Emperor in 1804?", "Lafayette", "Napoleon", "Robespierre", 'B', 3, 3},
+        {"US President during the Civil War?", "Washington", "Lincoln", "Roosevelt", 'B', 3, 3},
+        {"Global conflict of ideologies after WWII?", "Cold War", "Gulf War", "Korean War", 'A', 3, 3}
+    };
+}
+
 
 void showLesson() {
-    cout << "\n--- LESSON: EUROPE AT A GLANCE ---\n";
-    cout << "Largest country: Russia. Smallest: Vatican City.\n";
-    cout << "Longest river: Volga. Highest peak: Elbrus.\n";
-    cout << "Europe is the 2nd smallest continent but 3rd in population.\n";
-    cout << "EU has 27 member states.\n";
+    cout << "\n--- WORLD HISTORY LESSON ---\n";
+    cout << "* Ancient: Empires grew around rivers like the Nile.\n";
+    cout << "* Medieval: Feudalism and the Renaissance shaped Europe.\n";
+    cout << "* Modern: The 20th century saw two World Wars and Space flight.\n";
 }
 
-void startExam(vector<Question>& q1, vector<Question>& q2, vector<Question>& q3, vector<Student>& list) {
+void conductExam(vector<Question>& q1, vector<Question>& q2, vector<Question>& q3, vector<Student>& records) {
     Student s;
-    cout << "\nEnter your full name: ";
-    cin.ignore();
+    cout << "\nEnter Full Name: ";
     getline(cin, s.name);
-    s.total = s.cat1 = s.cat2 = s.cat3 = 0;
-    shuffleQs(q1);
-    shuffleQs(q2);
-    shuffleQs(q3);
+
+    shuffleQuestions(q1); shuffleQuestions(q2); shuffleQuestions(q3);
+
     vector<Question> exam;
-    for (int i = 0; i < 7; i++) exam.push_back(q1[i]);
-    for (int i = 0; i < 7; i++) exam.push_back(q2[i]);
-    for (int i = 0; i < 6; i++) exam.push_back(q3[i]);
+    for(int i = 0; i < 7; i++) exam.push_back(q1[i]);
+    for(int i = 0; i < 7; i++) exam.push_back(q2[i]);
+    for(int i = 0; i < 6; i++) exam.push_back(q3[i]);
+
+    int score = 0;
     for (int i = 0; i < exam.size(); i++) {
         cout << "\nQ" << (i + 1) << ": " << exam[i].text << endl;
-        cout << "A) " << exam[i].a << "  B) " << exam[i].b << "  C) " << exam[i].c << endl;
-        
-        char ans;
-        cout << "Your Answer (A/B/C): ";
-        cin >> ans;
-        ans = toupper(ans);
-            if (ans == exam[i].correct) {
-            s.total += exam[i].pts;
-            if (exam[i].cat == 1) s.cat1 += exam[i].pts;
-            else if (exam[i].cat == 2) s.cat2 += exam[i].pts;
-            else if (exam[i].cat == 3) s.cat3 += exam[i].pts;
-        }
+        cout << "A) " << exam[i].optionA << " B) " << exam[i].optionB << " C) " << exam[i].optionC << endl;
+        cout << "Answer: ";
+        char ans; cin >> ans;
+        if (toupper(ans) == exam[i].correctAnswer) score += exam[i].points;
     }
-    s.grade = ((double)s.total / 39.0) * 4.0 + 2.0;
-    if (s.grade > 6.0) s.grade = 6.0;
 
-    cout << "\n--- EXAM FINISHED ---\n";
-    cout << "Name: " << s.name
-         << " | Score: " << s.total << "/39"
-         << " | Grade: " << s.grade << endl;
-
-    list.push_back(s);
+    s.totalScore = score;
+    s.finalGrade = calculateGrade(score, 39);
+    records.push_back(s);
+    
+    cout << "\n>> " << s.name << ", your Grade is: " << s.finalGrade << " (" << score << "/39 pts)\n";
 }
-void showStats(const vector<Student>& list) {
-    if (list.empty()) {
-        cout << "\n[!] No exam data available.\n";
+
+void showStats(const vector<Student>& records) {
+    if (records.empty()) {
+        cout << "\n[!] No data found.\n";
         return;
     }
-
-    double sum = 0;
-    double maxG = 0;
-    double minG = 7.0;
-    string best, worst;
-
-    for (const auto& s : list) {
-        sum += s.grade;
-        if (s.grade > maxG) { maxG = s.grade; best = s.name; }
-        if (s.grade < minG) { minG = s.grade; worst = s.name; }
+    double sum = 0, bestG = 0, worstG = 7.0;
+    string bestN, worstN;
+    for (auto const& s : records) {
+        sum += s.finalGrade;
+        if (s.finalGrade > bestG) { bestG = s.finalGrade; bestN = s.name; }
+        if (s.finalGrade < worstG) { worstG = s.finalGrade; worstN = s.name; }
     }
-        cout << "\n---------- GLOBAL STATISTICS ----------\n";
-    cout << "Students tested: " << list.size() << endl;
-    cout << "Average Grade:   " << sum / list.size() << endl;
-    cout << "Highest Grade:   " << maxG << " (" << best << ")\n";
-    cout << "Lowest Grade:    " << minG << " (" << worst << ")\n";
-    cout << "---------------------------------------\n";
+    cout << "\n--- STATISTICS ---\n"
+         << "Average: " << sum / records.size() << "\n"
+         << "Best: " << bestG << " (" << bestN << ")\n"
+         << "Worst: " << worstG << " (" << worstN << ")\n";
 }
+
 
 int main() {
     srand(time(0));
-    vector<Student> list;
+    vector<Student> records;
+    vector<Question> ancient, medieval, modern;
+    
+    loadAncient(ancient); 
+    loadMedieval(medieval); 
+    loadModern(modern);
 
-    vector<Question> q1 = {
-        {"Capital of France?", "London", "Paris", "Berlin", 'B', 1, 1},
-        {"Capital of Italy?", "Rome", "Madrid", "Athens", 'A', 1, 1},
-        {"Capital of Spain?", "Lisbon", "Madrid", "Rome", 'B', 1, 1},
-        {"Capital of Germany?", "Vienna", "Munich", "Berlin", 'C', 1, 1},
-        {"Capital of UK?", "London", "Dublin", "Cardiff", 'A', 1, 1},
-        {"Capital of Greece?", "Sofia", "Athens", "Ankara", 'B', 1, 1},
-        {"Capital of Bulgaria?", "Sofia", "Bucharest", "Belgrade", 'A', 1, 1},
-        {"Capital of Austria?", "Vienna", "Prague", "Budapest", 'A', 1, 1},
-        {"Capital of Poland?", "Warsaw", "Kiev", "Minsk", 'A', 1, 1},
-        {"Capital of Sweden?", "Oslo", "Helsinki", "Stockholm", 'C', 1, 1}
-    };
-        vector<Question> q2 = {
-        {"Longest river in Europe?", "Danube", "Volga", "Rhine", 'B', 2, 2},
-        {"Where are the Alps?", "Central Europe", "North", "East", 'A', 2, 2},
-        {"Highest peak in Europe?", "Mont Blanc", "Elbrus", "Matterhorn", 'B', 2, 2},
-        {"Sea south of Europe?", "Baltic", "North Sea", "Mediterranean", 'C', 2, 2},
-        {"River in Paris?", "Seine", "Thames", "Rhone", 'A', 2, 2},
-        {"Mountains between Europe and Asia?", "Alps", "Ural", "Carpathians", 'B', 2, 2},
-        {"Largest island in Europe?", "Iceland", "Ireland", "Great Britain", 'C', 2, 2},
-        {"Country with most lakes?", "Finland", "Norway", "Sweden", 'A', 2, 2},
-        {"Where is Black Forest?", "France", "Germany", "Austria", 'B', 2, 2},
-        {"Ocean west of Europe?", "Pacific", "Indian", "Atlantic", 'C', 2, 2}
-    };
-    vector<Question> q3 = {
-        {"EU has how many member states?", "27", "28", "30", 'A', 3, 3},
-        {"Currency of Germany?", "Euro", "Mark", "Franc", 'A', 3, 3},
-        {"Language in Spain?", "Spanish", "Portuguese", "French", 'A', 3, 3},
-        {"Flag with red and white?", "Denmark", "Switzerland", "Poland", 'B', 3, 3},
-        {"Where is Vatican City?", "Italy", "France", "Spain", 'A', 3, 3},
-        {"Where is Kremlin?", "Moscow", "St. Petersburg", "Kiev", 'A', 3, 3},
-        {"Where is Acropolis?", "Rome", "Athens", "Istanbul", 'B', 3, 3},
-        {"Where is Big Ben?", "London", "Edinburgh", "Dublin", 'A', 3, 3},
-        {"Where is Sagrada Familia?", "Barcelona", "Madrid", "Valencia", 'A', 3, 3},
-        {"Where is Neuschwanstein Castle?", "Austria", "Germany", "Switzerland", 'B', 3, 3}
-    };
-
-        int choice;
-
-    do {
-        showMenu();
-        choice = getInt(1, 5);
+    int choice = 0;
+    while (choice != 5) {
+        cout << "\n1.Lesson 2.Practice 3.Exam 4.Stats 5.Exit\nChoice: ";
+        choice = getValidInteger(1, 5);
 
         if (choice == 1) showLesson();
         else if (choice == 2) cout << "\nPractice mode coming soon...\n";
-        else if (choice == 3) startExam(q1, q2, q3, list);
-        else if (choice == 4) showStats(list);
-
-    } while (choice != 5);
-
-    cout << "Exiting program. Goodbye!\n";
+        else if (choice == 3) conductExam(ancient, medieval, modern, records);
+        else if (choice == 4) showStats(records);
+    }
+    cout << "Goodbye!\n";
     return 0;
 }
